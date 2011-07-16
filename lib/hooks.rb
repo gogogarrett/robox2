@@ -1,4 +1,8 @@
 module Hooks
+  # TODO: Add prepend_hook
+  # TODO: Add remove_hook
+  # TODO: Make 'triggers' accept arguments to pass to its functions
+  # TODO: Figure out a graceful way to add hooks when in pluginspace
   
   def add_hook(key, callback, *args)
     if @hooks.has_key? key
@@ -12,7 +16,7 @@ module Hooks
     if @hooks.has_key? key
       @hooks[key].each do |arr|
         callback = arr.shift
-        self.send(callback, *arr) if respond_to? callback
+        send(callback, *arr) if respond_to? callback
       end
     end
   end

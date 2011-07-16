@@ -10,10 +10,13 @@ class IRCClient
   
   def initialize
     @hooks ||= {}
-    
-    add_hook :connect, :join, "#robox"
+    add_hook :connect, :on_connect
     
     connect!
+    
+    loop do
+      parse @socket.gets
+    end
   end
   
   def connect!
@@ -23,21 +26,52 @@ class IRCClient
     
     @socket     = TCPSocket.open(server, port)
     
-    raw "USER #{@nickname} #{@nickname} #{@nickname} #{@nickname}"
-    raw "NICK #{@nickname}"
+    reply "USER #{@nickname} #{@nickname} #{@nickname} #{@nickname}"
+    reply "NICK #{@nickname}"
     
     did_connect!
   end
   
+  def on_connect
+    join "#robox"
+  end
+  
   def join(channel)
-    raw "JOIN #{channel}"
+    reply "JOIN #{channel}"
     
     did_join_channel!
   end
   
-  def raw(message)
+  def reply(message)
     puts ">> #{message}"
     @socket.puts message
   end
+  
+  def parse(message)
+    message.strip!
+    
+    did_receive_response!
+    puts message
+    
+    sender, raw, target = *(message.split(" "))
+    
+    if /^PING (.+?)$/.match(message)
+      reply "PONG #{$1}"
+    
+    elsif /\d+/.match(raw)
+      send("handle_#{raw}", raw) if respond_to? "handle_#{raw}"
+      
+    elsif raw == 'PRIVMSG'
+      # Do something
+
+    elsif raw == 'JOIN'
+    elsif raw == 'KICK'
+    elsif raw == 'MODE'
+    elsif raw == 'PART'
+    elsif raw == 'QUIT'  
+    end
+    
+  end
+  
   
 end
