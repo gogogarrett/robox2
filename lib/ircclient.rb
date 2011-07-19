@@ -1,17 +1,19 @@
 require 'socket'
 require './lib/hooks.rb'
 require './lib/events.rb'
+require './lib/actions.rb'
 
 class IRCClient
   include Hooks
   include Events
+  include Actions
   
   attr_accessor :hooks
   
   def initialize
     @hooks ||= {}
     add_hook :connect, :on_connect
-    
+    add_hook :join, :on_join, :channel
     connect!
     
     loop do
@@ -19,27 +21,13 @@ class IRCClient
     end
   end
   
-  def connect!
-    server      = Setting.find_by_name('server').value
-    port        = Setting.find_by_name('port').value
-    @nickname   = Setting.find_by_name('nickname').value
-    
-    @socket     = TCPSocket.open(server, port)
-    
-    reply "USER #{@nickname} #{@nickname} #{@nickname} #{@nickname}"
-    reply "NICK #{@nickname}"
-    
-    did_connect!
-  end
-  
   def on_connect
     join "#robox"
+    join "#chat"
   end
   
-  def join(channel)
-    reply "JOIN #{channel}"
-    
-    did_join_channel!
+  def on_join(channel)
+    say channel, "HELLO, #{channel}!!"
   end
   
   def reply(message)
@@ -47,10 +35,11 @@ class IRCClient
     @socket.puts message
   end
   
+  
   def parse(message)
     message.strip!
     
-    did_receive_response!
+    did_receive_response!(message)
     puts message
     
     sender, raw, target = *(message.split(" "))
@@ -62,13 +51,23 @@ class IRCClient
       send("handle_#{raw}", raw) if respond_to? "handle_#{raw}"
       
     elsif raw == 'PRIVMSG'
-      # Do something
+      did_receive_privmsg!(message)
 
     elsif raw == 'JOIN'
+      # Handle new user and new channel
     elsif raw == 'KICK'
+      # Handle removing channel and updating user
     elsif raw == 'MODE'
+      # Handle updating channel modes
     elsif raw == 'PART'
-    elsif raw == 'QUIT'  
+      # Handle removing channel and updating user
+    elsif raw == 'QUIT'
+      # Handle updating user
+    elsif raw == 'NICK'
+      # Handle updating user
+    elsif raw == 'TOPIC'
+      # Handle updating channel
+    
     end
     
   end
