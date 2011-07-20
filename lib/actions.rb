@@ -12,11 +12,10 @@ module Actions
     
     did_connect!
   end
-  
+
   def join(channel)
     reply "JOIN #{channel}"
-    puts "-- Calling did_join_channel! with channel #{channel}..."
-    sleep 5
+    debug "-- Calling did_join_channel! with channel #{channel}..."
     did_join_channel!(channel)
   end
   
@@ -24,4 +23,11 @@ module Actions
     reply "PRIVMSG #{target} :#{message}"
   end
   
+  def set_mode(modestring)
+    reply "MODE #{modestring}"
+  end
+
+  def op(user, channel)
+    set_mode "#{channel} +o #{user}"
+  end
 end

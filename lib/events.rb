@@ -7,7 +7,7 @@ module Events
   end
 
   def did_join_channel!(channel)
-    triggers :join, :channel => channel
+    triggers :self_join, :channel => channel
   end
   
   def did_receive_response!(message)
@@ -20,6 +20,18 @@ module Events
   
   def did_receive_notice!(message)
     triggers :notice, :message => message
+  end
+
+  def did_receive_startup_raw!
+    triggers :startup_raw
+  end
+
+  def did_receive_raw!(numeric)
+    triggers :raw, :numeric => numeric
+  end
+
+  def did_receive_join!(user, channel)
+    triggers :join, :user => user, :channel => channel
   end
   
 
