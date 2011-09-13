@@ -16,8 +16,6 @@ module Hooks
     else
       @hooks[key] = [[callback, *args]]
     end
-
-    debug @hooks.inspect
   end
   
   def run_hook(key, data = {})
@@ -31,8 +29,6 @@ module Hooks
         send(callback, *arr) if respond_to? callback
       end
     end
-
-    debug @hooks.inspect
   end
   
   def triggers(event, data = {})

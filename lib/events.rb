@@ -14,7 +14,7 @@ module Events
     triggers :response, :message => message
   end
   
-  def did_receive_privmsg!(message)
+  def did_receive_privmsg!(target, message)
     triggers :privmsg, :message => message
   end
   
@@ -34,5 +34,29 @@ module Events
     triggers :join, :user => user, :channel => channel
   end
   
+  # Channel, Abuser, User, Message
+  def did_receive_kick!(channel, abuser, user, message)
+    triggers :kick, :channel => channel, :abuser => abuser, :user => user, :message => message
+  end
+  
+  def did_receive_nick_change!(old_nick, new_nick)
+    triggers :nick_change, :old_nick => old_nick, :new_nick => new_nick
+  end
+
+  def did_receive_topic_change!(channel, topic)
+    triggers :topic_change, :channel => channel, :topic => topic
+  end
+  
+  def did_receive_part!(user, channel)
+    triggers :part, :user => user, :channel => channel
+  end 
+  
+  def did_receive_mode_change!(channel, modestring)
+    triggers :mode_change, :channel => channel, :modestring => modestring
+  end
+  
+  def did_receive_quit!(user)
+    triggers :quit, :user => user
+  end
 
 end

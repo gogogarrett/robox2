@@ -1,0 +1,5 @@
+LB works like this:
+
+1. Load the robox file, and invoke a new instance of IRCClient.
+
+2. 
