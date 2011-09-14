@@ -3,7 +3,7 @@ module Actions
   def connect!
     server      = Setting.find_by_name('server').value
     port        = Setting.find_by_name('port').value
-    @nickname   = 'Boxbot' # Setting.find_by_name('nickname').value
+    @nickname   = Setting.find_by_name('nickname').value || 'Boxbot'
     
     @socket     = TCPSocket.open(server, port)
     

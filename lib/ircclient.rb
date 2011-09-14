@@ -40,7 +40,6 @@ class IRCClient
     
     @hooks ||= {}
     add_hook(:startup_raw) { self.on_startup }
-    add_hook(:self_join) {|m| self.on_self_join(m) }
     add_hook(:join) {|m| self.on_join(m) }
     add_hook(:kick) {|m| self.on_kick(m) }
     add_hook(:nick_change) {|m| self.on_nick_change(m) }
@@ -66,16 +65,6 @@ class IRCClient
     message = message.gsub(':', '').split(" ")
     sender, raw, target = message.shift(3)
     user, hostname = sender.split "!"
-    
-    # debug "-------------------------------------"
-    # debug ""
-    # debug "Sender: #{sender}"
-    # debug "Raw: #{raw}"
-    # debug "Target: #{target}"
-    # debug "User: #{user}"
-    # debug "Hostname: #{hostname}"
-    # debug "Message: #{message}"
-    # debug ""
     
     if /\d+/.match(raw)
       send("raw_#{raw}", raw) if respond_to? "raw_#{raw}"

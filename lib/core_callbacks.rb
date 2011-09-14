@@ -14,13 +14,8 @@ module CoreCallbacks
   end
   
   def on_startup
-    join "#robox"
+    join "#chat"
     join "#robox2"
-  end
-  
-  def on_self_join(m)
-    debug "Saying in #{m[:channel]}..."
-    say m[:channel], "HELLO, #{m[:channel]}!!"
   end
 
   def on_join(m)
