@@ -5,7 +5,7 @@ module CoreCallbacks
   end
   
   def on_kick(m)
-    if user == @nickname
+    if m[:user] == @nickname
       join m[:channel]
       say m[:channel], "You scum-bucket, #{m[:abuser]}! How DARE you kick me!!"
     else
