@@ -10,23 +10,22 @@ module Hooks
   #  key        => the event to add the hook to
   #  callback   => the name of the function to call
   #  *args      => any number of symbols representing the name of the value to request, i.e. :message
-  def add_hook(key, callback, *args)
+  def add_hook(key, &block)
     if @hooks.has_key? key
-      @hooks[key].push [callback, *args]
+      @hooks[key].push block
     else
-      @hooks[key] = [[callback, *args]]
+      @hooks[key] = [block]
     end
   end
   
   def run_hook(key, data = {})
     if @hooks.has_key? key
-      @hooks[key].each do |array|
-        arr = array.clone
-        callback = arr.shift
-        vals_for_callback = data.select{|k, v| arr.include? k }
-        arr = arr.map{|val| vals_for_callback[val] }
-        # Need to take {:my_data => 1, :my_arg => 'spot'} and pass it only those values it requests
-        send(callback, *arr) if respond_to? callback
+      @hooks[key].clone.each do |block|
+        if data.empty?
+          block.call
+        else
+          block.call(data)
+        end
       end
     end
   end

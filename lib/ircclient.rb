@@ -13,6 +13,7 @@ require './lib/events.rb'
 require './lib/actions.rb'
 require './lib/raws.rb'
 require './lib/utilities.rb'
+require './lib/core_callbacks.rb'
 
 # Global flags
 $debug = true
@@ -23,6 +24,7 @@ class IRCClient
   include Actions
   include Raws
   include Utilities
+  include CoreCallbacks
   
   attr_accessor :hooks
   attr_reader :nickname
@@ -36,53 +38,21 @@ class IRCClient
         :timeout => 5000
     })
     
-    
     @hooks ||= {}
-    add_hook :startup_raw, :on_startup
-    add_hook :self_join, :on_self_join, :channel 
-    add_hook :join, :on_join, :user, :channel
-    add_hook :kick, :on_kick, :channel, :abuser, :user, :message
-    add_hook :nick_change, :on_nick_change, :old_nick, :new_nick
+    add_hook(:startup_raw) { self.on_startup }
+    add_hook(:self_join) {|m| self.on_self_join(m) }
+    add_hook(:join) {|m| self.on_join(m) }
+    add_hook(:kick) {|m| self.on_kick(m) }
+    add_hook(:nick_change) {|m| self.on_nick_change(m) }
+  end
+  
+  def go!
     connect!
-    
+        
     loop do
       parse @socket.gets
     end
   end
-  
-  def on_nick_change(old_nick, new_nick)
-    say new_nick, "You can't fool me, #{old_nick}. You may have a fancy new nickname like #{new_nick}, but you'll always be #{old_nick} to me."
-  end
-  
-  def on_kick(channel, abuser, user, message)
-    if user == @nickname
-      join channel
-      say channel, "You scum-bucket, #{abuser}! How DARE you kick me!!"
-    else
-      say channel, "Haha! #{user} got kicked!"
-    end
-  end
-  
-  def on_startup
-    join "#robox"
-    join "#robox2"
-    join "#chat"
-  end
-  
-  def on_self_join(channel)
-    debug "Saying in #{channel}..."
-    say channel, "HELLO, #{channel}!!"
-  end
-
-  def on_join(user, channel)
-    op user, channel
-  end
-  
-  def reply(message)
-    chat ">> #{message}"
-    @socket.puts message
-  end
-  
   
   def parse(message)
     message.strip!

@@ -3,7 +3,7 @@ module Actions
   def connect!
     server      = Setting.find_by_name('server').value
     port        = Setting.find_by_name('port').value
-    @nickname   = Setting.find_by_name('nickname').value
+    @nickname   = 'Boxbot' # Setting.find_by_name('nickname').value
     
     @socket     = TCPSocket.open(server, port)
     
@@ -12,6 +12,12 @@ module Actions
     
     did_connect!
   end
+
+  def reply(message)
+    chat ">> #{message}"
+    @socket.puts message
+  end
+
 
   def join(channel)
     reply "JOIN #{channel}"
