@@ -18,7 +18,6 @@ module Actions
     @socket.puts message
   end
 
-
   def join(channel)
     reply "JOIN #{channel}"
     debug "-- Calling did_join_channel! with channel #{channel}..."

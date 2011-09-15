@@ -8,8 +8,7 @@ module Hooks
   # 
   # Params:
   #  key        => the event to add the hook to
-  #  callback   => the name of the function to call
-  #  *args      => any number of symbols representing the name of the value to request, i.e. :message
+  #  {block}    => the name of the function to run.
   def add_hook(key, &block)
     if @hooks.has_key? key
       @hooks[key].push block
@@ -19,18 +18,10 @@ module Hooks
   end
   
   def run_hook(key, data = {})
-    if @hooks.has_key? key
-      @hooks[key].clone.each do |block|
-        if data.empty?
-          block.call
-        else
-          block.call(data)
-        end
-      end
-    end
+    @hooks[key].clone.each {|block| data.empty? ? block.call : block.call(data) } if @hooks.has_key? key
   end
   
-  def triggers(event, data = {})
+  def trigger(event, data = {})
     run_hook event, data
   end
   
