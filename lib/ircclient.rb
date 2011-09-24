@@ -31,6 +31,7 @@ class IRCClient
     end
   end
   
+  # TODO: Enable notice catching.
   def parse(message)
     message.strip!
     log message
@@ -46,6 +47,7 @@ class IRCClient
     
     if /\d+/.match(raw)
       send("raw_#{raw}", raw) if respond_to? "raw_#{raw}"
+      did_receive_raw!(raw)
       
     elsif raw == 'PRIVMSG'
       did_receive_privmsg!(target, message.join(' '))

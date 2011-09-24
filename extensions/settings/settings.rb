@@ -2,6 +2,10 @@ require './lib/ircclient.rb'
 
 class SettingsPlugin < IRCClient
 
+  def initialize
+    add_hook(:command) {|m| route m[:target], m[:command] } 
+  end
+
   ################################################################
   public
   ################################################################
@@ -51,4 +55,3 @@ class SettingsPlugin < IRCClient
 end
 
 plugin = SettingsPlugin.new
-plugin.add_hook(:command) {|m| plugin.route m[:target], m[:command] } 
