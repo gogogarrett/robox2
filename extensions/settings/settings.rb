@@ -1,5 +1,3 @@
-require './lib/ircclient.rb'
-
 class SettingsPlugin < IRCClient
 
   def initialize

@@ -3,8 +3,8 @@
 # Global flags
 $debug = true
 
-require 'bundler/setup'
 # Libraries
+require 'bundler/setup'
 require 'active_record'
 require 'socket'
 require 'colorize'
@@ -24,17 +24,8 @@ Dir[File.join(File.dirname(__FILE__), 'extensions', '**', '*.rb')].each do |file
   require file
 end
 
-
-
 class Bot  
-  def initialize
-    ActiveRecord::Base.establish_connection({
-        :adapter => 'sqlite3',
-        :database => 'db/development.db',
-        :pool => 5,
-        :timeout => 5000
-    })
-    
+  def initialize    
     @bot = IRCClient.new
     @bot.prepend_hook(:startup) { @bot.join "#robox2" }
     @bot.go!

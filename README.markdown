@@ -37,8 +37,6 @@ As another example, let's look at a hook that adds a greeting when Robox detects
 
 Here's what a more complete example looks like:
 
-    require './lib/ircclient.rb'
-    
     class MyGreetingPlugin < IRCClient
       
       def initialize

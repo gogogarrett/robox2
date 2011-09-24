@@ -1,6 +1,13 @@
 # Modules
 Dir[File.join(File.dirname(__FILE__), 'ircclient_modules', '*.rb')].each {|file| require file }
 
+ActiveRecord::Base.establish_connection({
+    :adapter => 'sqlite3',
+    :database => 'db/development.db',
+    :pool => 5,
+    :timeout => 5000
+})
+
 class IRCClient
   
   @@hooks ||= {}
