@@ -1,3 +1,5 @@
+require 'active_record'
+
 # Modules
 Dir[File.join(File.dirname(__FILE__), 'ircclient_modules', '*.rb')].each {|file| require file }
 
