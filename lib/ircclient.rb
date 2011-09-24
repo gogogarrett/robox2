@@ -1,24 +1,10 @@
-# Libraries
-require 'bundler/setup'
-require 'socket'
-require 'colorize'
-require 'active_record'
-
-# Models
-require './app/models/setting.rb'
-
 # Modules
-require './lib/hooks.rb'
-require './lib/events.rb'
-require './lib/actions.rb'
-require './lib/raws.rb'
-require './lib/utilities.rb'
-require './lib/core_callbacks.rb'
-
-# Global flags
-$debug = true
+Dir[File.join(File.dirname(__FILE__), 'ircclient_modules', '*.rb')].each {|file| require file }
 
 class IRCClient
+  
+  @@hooks ||= {}
+
   include Hooks
   include Events
   include Actions
@@ -26,30 +12,22 @@ class IRCClient
   include Utilities
   include CoreCallbacks
   
-  attr_accessor :hooks
-  attr_reader :nickname
+  def initialize    
+  end
   
-  def initialize
-
-    ActiveRecord::Base.establish_connection({
-        :adapter => 'sqlite3',
-        :database => 'db/development.db',
-        :pool => 5,
-        :timeout => 5000
-    })
-    
-    @hooks ||= {}
-    add_hook(:startup_raw) { self.on_startup }
-    add_hook(:join) {|m| self.on_join(m) }
-    add_hook(:kick) {|m| self.on_kick(m) }
-    add_hook(:nick_change) {|m| self.on_nick_change(m) }
+  def nickname
+    @@nickname
+  end
+  
+  def show_hooks
+    @@hooks.inspect if $debug
   end
   
   def go!
     connect!
         
     loop do
-      parse @socket.gets
+      parse @@socket.gets
     end
   end
   
@@ -70,18 +48,18 @@ class IRCClient
       send("raw_#{raw}", raw) if respond_to? "raw_#{raw}"
       
     elsif raw == 'PRIVMSG'
-      did_receive_privmsg!(target, message.join)
+      did_receive_privmsg!(target, message.join(' '))
 
     elsif raw == 'JOIN'
       # Handle new user and new channel
-      if (user != @nickname)
+      if (user != @@nickname)
         did_receive_join!(user, target)
       else
         # Blow bubbles
       end
 
     elsif raw == 'KICK'
-      did_receive_kick!(target, user, message.shift, message.join)
+      did_receive_kick!(target, user, message.shift, message.join(' '))
     elsif raw == 'MODE'
       did_receive_mode_change!(target, message)
     elsif raw == 'PART'

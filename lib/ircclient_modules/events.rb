@@ -16,6 +16,16 @@ module Events
   
   def did_receive_privmsg!(target, message)
     trigger :privmsg, {:target => target, :message => message}
+    
+    if /\A!/.match message
+      message.slice!(0)
+      did_receive_command!(target, message)
+    end
+    
+  end
+  
+  def did_receive_command!(target, command)
+    trigger :command, {:target => target, :command => command}
   end
   
   def did_receive_notice!(message)
@@ -23,7 +33,7 @@ module Events
   end
 
   def did_receive_startup_raw!
-    trigger :startup_raw
+    trigger :startup
   end
 
   def did_receive_raw!(numeric)
