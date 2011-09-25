@@ -1,3 +1,6 @@
+require 'bundler/setup'
+require 'active_record'
+require './app/models/setting.rb'
 require './lib/ircclient.rb'
 
 task :default => 'install'

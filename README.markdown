@@ -69,7 +69,7 @@ Here's a list of the names of the hooks that can be triggered, and the 'm' data 
     
     # Triggers when Robox receives a private message. 
     # Target in this case can be a user or a channel.
-    trigger :privmsg, {:target, :message}
+    trigger :privmsg, {:target, :user, :message}
     
     # Triggers when Robox receives a command (a message beginning with '!').
     # Target in this case can be a user or channel, and command has the '!' removed.

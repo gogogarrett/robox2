@@ -59,7 +59,7 @@ class IRCClient
       did_receive_raw!(raw)
       
     elsif raw == 'PRIVMSG'
-      did_receive_privmsg!(target, message.join(' '))
+      did_receive_privmsg!(target, user, message.join(' '))
 
     elsif raw == 'JOIN'
       # Handle new user and new channel

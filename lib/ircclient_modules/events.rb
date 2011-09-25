@@ -14,8 +14,8 @@ module Events
     trigger :response, {:message => message}
   end
   
-  def did_receive_privmsg!(target, message)
-    trigger :privmsg, {:target => target, :message => message}
+  def did_receive_privmsg!(target, user, message)
+    trigger :privmsg, {:target => target, :user => user, :message => message}
     
     if /\A!/.match message
       message.slice!(0)
