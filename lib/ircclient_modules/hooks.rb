@@ -20,7 +20,7 @@ module Hooks
   
   def prepend_hook(key, &block)
     if @@hooks.has_key? key
-      @@hooks[key].unshift bock
+      @@hooks[key].unshift block
     else
       @@hooks[key] = [block]
     end
