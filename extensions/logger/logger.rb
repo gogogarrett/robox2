@@ -1,10 +1,11 @@
 require 'date'
 require 'fileutils'
 
-class ChatLogger < IRCClient
+class ChatLogger < Plugin
   
   def initialize
     add_hook(:privmsg) {|m| log_channel_message(m[:target], m[:user], m[:message])}
+    super
   end
   
   def log_channel_message(target, user, message)
@@ -33,7 +34,6 @@ class ChatLogger < IRCClient
     <td class="text">#{message}</td>
   </tr>
 EOS
-      debug first_write
       f.puts first_write
       end
     else

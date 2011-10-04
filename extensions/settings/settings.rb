@@ -1,7 +1,9 @@
-class SettingsPlugin < IRCClient
+class SettingsPlugin < Plugin
 
   def initialize
-    add_hook(:command) {|m| route m[:target], m[:command] } 
+    add_hook(:command) {|m| route m[:target], m[:command] }
+    add_hook(:startup) {||}
+    super
   end
 
   ################################################################
@@ -10,7 +12,11 @@ class SettingsPlugin < IRCClient
   
   def route(target, command)
     # If we don't match the namespace and the possible command, terminate ASAP.
-    return false unless /config (get|set)/i.match command
+    return false unless /config (get|set|list)/i.match command
+
+    if $1.downcase == 'list'
+      list(target)
+    end
     
     # Strip the first two words from the argument.
     command = command.split(' ').slice(2..-1).join(' ')
@@ -26,6 +32,10 @@ class SettingsPlugin < IRCClient
   ################################################################  
   private
   ################################################################
+  
+  def list(target)
+    say target, "Valid config settings: #{Setting.all.collect(&:name).join(", ")}"
+  end
   
   def get(target, name)
     setting = Setting.find_by_name(name)

@@ -1,4 +1,4 @@
-class ChannelsPlugin < IRCClient
+class ChannelsPlugin < Plugin
 end
 
 plugin = ChannelsPlugin.new

@@ -1,7 +1,8 @@
-class ChancePlugin < IRCClient
+class ChancePlugin < Plugin
 
   def initialize
     add_hook(:command) {|m| route m[:target], m[:command] }
+    super
   end
 
   def route(target, command)

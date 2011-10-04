@@ -19,15 +19,18 @@ end
 puts "Requiring IRCClient..."
 require File.join(File.dirname(__FILE__), 'lib', 'ircclient')
 
+puts "Requiring Plugin base..."
+require File.join(File.dirname(__FILE__), 'lib', 'plugin')
+
 Dir[File.join(File.dirname(__FILE__), 'extensions', '**', '*.rb')].each do |file|
-  puts "Requiring #{file}..."
-  require file
+  puts "Loading #{file}..."
+  load file
 end
 
 class Bot  
   def initialize    
     @bot = IRCClient.new
-    @bot.prepend_hook(:startup) { @bot.join "#robox2" }
+    @bot.add_hook(:startup) { @bot.join "#robox2" }
     @bot.go!
   end
   
