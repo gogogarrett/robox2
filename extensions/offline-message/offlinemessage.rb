@@ -1,4 +1,4 @@
-class OfflineMessages < IRCClient
+class OfflineMessages < Plugin
 
   def initialize
     add_hook(:join) { |m| send_message( m[:user] ) }
