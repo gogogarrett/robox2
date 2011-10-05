@@ -25,12 +25,27 @@ class ChatLogger < Plugin
 <html>
 <head>
   <title>#{date.year.to_s} - #{date.month.to_s} - #{date.day.to_s} -- #{target}</title>
+  <style type="text/css">
+    body {
+        background: black;
+    }
+    td {
+        color: white;
+        padding: 5px;
+    }
+    td.timestamp {
+        color: #3386c0;
+    }
+    td.name {
+        color: #3b85e9;
+    }
+  </style>
 </head>
 <body>
 <table>
   <tr>
-    <td class="timestamp">#{time}<td>
-    <td class="name">#{user}</td>
+    <td class="timestamp">#{time}</td>
+    <td class="name">#{user}:</td>
     <td class="text">#{message}</td>
   </tr>
 EOS
