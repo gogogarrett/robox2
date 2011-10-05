@@ -1,6 +1,8 @@
 .bundle
 #db/*.sqlite3
 log/*.log
+logs/*.logs
+logs/*.html
 tmp/
 # Rails
 .bundle

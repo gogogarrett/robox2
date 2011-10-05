@@ -14,6 +14,10 @@ class ConvertPlugin < Plugin
       say target, "#{$1}lbs => \u0002#{lbs_to_kgs($1)}kgs\u000f"
     elsif /\A(-?\d+)lbs to kgs\Z/i.match command
       say target, "#{$1}kgs => \u0002#{kgs_to_lbs($1)}lbs\u000f"
+    elsif /\A(-?\d+)miles to kms\Z/i.match command
+      say target, "#{$1}miles => \u0002#{miles_to_kms($1)}kms\u000f"
+    elsif /\A(-?\d+)kms to miles\Z/i.match command
+      say target, "#{$1}kms => \u0002#{kms_to_miles($1)}miles\u000f"
     end
   end
   
@@ -33,6 +37,14 @@ class ConvertPlugin < Plugin
   def kgs_to_lbs(pounds)
     convert = pounds.to_i * 2.2
     sprintf("%.2f", convert)
+  end
+
+  def miles_to_kms(distance)
+    miles = distance.to_i * 1.6
+  end
+
+  def kms_to_miles(distance)
+    km = distance.to_i * 0.6
   end
   
 end
