@@ -2,7 +2,6 @@ class SettingsPlugin < Plugin
 
   def initialize
     add_hook(:command) {|m| route m[:target], m[:command] }
-    add_hook(:startup) {||}
     super
   end
 
@@ -16,6 +15,7 @@ class SettingsPlugin < Plugin
 
     if $1.downcase == 'list'
       list(target)
+      return true
     end
     
     # Strip the first two words from the argument.
