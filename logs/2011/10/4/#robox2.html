@@ -1084,3 +1084,488 @@
 		<td class="name">GoGoGarrett</td>
 		<td class="text">no private messgae though</td>
 	</tr>
+	<tr>
+		<td class="timestamp">19:40</td>
+		<td class="name">Rob_</td>
+		<td class="text">i have a thought or two about that</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:40</td>
+		<td class="name">Rob_</td>
+		<td class="text">what does the log look like?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">hmm</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">robot2.html</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">looks like a text based chat p</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">and in the server bot thing</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">GoGoGarrett!GoGoGarret@C13C483C.AF25D116.508CCDA.IP PRIVMSG #robox2 !tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">GoGoGarrett!GoGoGarret@C13C483C.AF25D116.508CCDA.IP PRIVMSG #robox2 well he hasn't broke yet</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">Nothing special</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:42</td>
+		<td class="name">Rob_</td>
+		<td class="text">huh</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:42</td>
+		<td class="name">Rob_</td>
+		<td class="text">okay</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:43</td>
+		<td class="name">Rob_</td>
+		<td class="text">can you re-gist?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:43</td>
+		<td class="name">Rob_</td>
+		<td class="text">or even commit, and i'll look through your changes?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:43</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">https//gist.github.com/1263185</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">for one</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">you need to do $1, and $2</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">not just 1 and 2</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">and strip out the "#{}" part</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">lol</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:44</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">ahah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">save_message($1, $2)</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:44</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">gotcha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:45</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett herrrro</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:45</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">naope</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:45</td>
+		<td class="name">Rob_</td>
+		<td class="text">and nothing in the logs, hmm?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:46</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">nope</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:46</td>
+		<td class="name">Rob_</td>
+		<td class="text">okay</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:46</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">unless Im not looking in the right logs</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:46</td>
+		<td class="name">Rob_</td>
+		<td class="text">nah, just stdout</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:46</td>
+		<td class="name">Rob_</td>
+		<td class="text">i'd add a debug method in route just before save_message</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:46</td>
+		<td class="name">Rob_</td>
+		<td class="text">say 'debug "Saved message."'</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:47</td>
+		<td class="name">Rob_</td>
+		<td class="text">see if you get an annotation in the logs when you run the command</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:47</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:48</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:48</td>
+		<td class="name">Rob_</td>
+		<td class="text">that'd do it</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:48</td>
+		<td class="name">Rob_</td>
+		<td class="text">yeah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:48</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">RIVMSG #robox2 debug "Saved messaged."</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:48</td>
+		<td class="name">Rob_</td>
+		<td class="text">not quite what i was thinking xD</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:49</td>
+		<td class="name">Rob_</td>
+		<td class="text">you don't need to say target "debug Saved Message"</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:49</td>
+		<td class="name">Rob_</td>
+		<td class="text">you should just write 'debug'</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:49</td>
+		<td class="name">Rob_</td>
+		<td class="text">debug is a method in ircclient, lol</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:49</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">haha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:49</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">xD</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:49</td>
+		<td class="name">Rob_</td>
+		<td class="text">https//github.com/robyurkowski/robox2/blob/master/lib/ircclient_modules/utilities.rb</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:50</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:51</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:51</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">K I got</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:51</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">Saved Messaged.</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:51</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">in red</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:52</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:53</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:53</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">I put it before/after the OfflineMessage.create</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:53</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">both time I got the same red debug message in the log</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:54</td>
+		<td class="name">Rob_</td>
+		<td class="text">well, you know it's not blocking</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:54</td>
+		<td class="name">Rob_</td>
+		<td class="text">now change it to be after that line</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:54</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">I put it before and after the save method of the object</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:54</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">and both worked</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:55</td>
+		<td class="name">Rob_</td>
+		<td class="text">and do something like 'debug "Message Count #{OfflineMessage.count}"'</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:55</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">I put it before and after the save method call in the route method</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:55</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">ah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:55</td>
+		<td class="name">Rob_</td>
+		<td class="text">nah, i know</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:55</td>
+		<td class="name">Rob_</td>
+		<td class="text">i'm just a slow typer, lol</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:55</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett brokenz</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:55</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">Message Count 7</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:55</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">Bam</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:55</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">so it could be my send message method</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:56</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett brokenz</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:56</td>
+		<td class="name">Rob_</td>
+		<td class="text">lol</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:56</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">It's what I figured</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:57</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">it's saving it as gogogarrett</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:57</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">my name is GoGoGarrett</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:57</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">we need to sanataizes data!</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:57</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">0 <== debug "#{@messages.count}"</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:57</td>
+		<td class="name">Rob_</td>
+		<td class="text">lol</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell GoGoGarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">yep</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">that's it</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">it worked xD</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">that worked?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">awesome</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">okay</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">1958 garebear GoGoGarrett asked me to tell you hey - at 2011-10-04 195800 -0500</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">so just do a check if @nickname.downcase</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">and then downcase any nicknames you save</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">noice!</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">that is awesome</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">!tell Rob_ sup, foo?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">/</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:59</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">no worky</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:59</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">ownd.</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:59</td>
+		<td class="name">Rob_</td>
+		<td class="text">lol</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:59</td>
+		<td class="name">Rob_</td>
+		<td class="text">keep going</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:59</td>
+		<td class="name">Rob_</td>
+		<td class="text">also, that regex will need work, likely /</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:59</td>
+		<td class="name">Rob_</td>
+		<td class="text">but it's a start</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:59</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">20:00</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">yup</td>
+	</tr>
+	<tr>
+		<td class="timestamp">20:00</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">fixd</td>
+	</tr>

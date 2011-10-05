@@ -7,12 +7,12 @@ class OfflineMessages < IRCClient
 
   def route(target, user, command)
     if /\Atell (\w+) ([\w\s]+)\Z/i.match command
-      save_message("#{1}", "#{2}")
+      save_message($1, $2)
     end
   end
 
   def send_message(username)
-    @messages = ::OfflineMessage.where(username: username)
+    @messages = OfflineMessage.where(username: username)
     if @messages
       @messages.each do |message|
         say username, "#{message.username} asked me to tell you: #{message.body} - at #{message.created_at}"
@@ -21,7 +21,7 @@ class OfflineMessages < IRCClient
   end
 
   def save_message(username, message)
-    @message = ::OfflineMessage.create(username: username, body: message)
+    @message = OfflineMessage.create(username: username.downcase, body: message)
   end
 
 end
