@@ -19,13 +19,13 @@ module Events
     
     if /\A!/.match message
       message.slice!(0)
-      did_receive_command!(target, message)
+      did_receive_command!(target, user, message)
     end
     
   end
   
-  def did_receive_command!(target, command)
-    trigger :command, {:target => target, :command => command}
+  def did_receive_command!(target, user, command)
+    trigger :command, {:target => target, :user => user, :command => command}
   end
   
   def did_receive_notice!(message)

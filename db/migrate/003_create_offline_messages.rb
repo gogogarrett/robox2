@@ -1,6 +1,6 @@
-class OfflineMessages < ActiveRecord::Migration
+class CreateOfflineMessages < ActiveRecord::Migration
   def self.up
-    create_table :offline_messages do |t|
+    create_table :offlinemessages do |t|
       t.string :username
       t.string :body
       t.string :recipient
@@ -10,6 +10,6 @@ class OfflineMessages < ActiveRecord::Migration
   end
   
   def self.down
-    drop_table :offline_messages
+    drop_table :offlinemessages
   end
 end

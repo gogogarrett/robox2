@@ -1,0 +1,861 @@
+<html>
+<head>
+  <title>2011 - 10 - 4 -- #robox2</title>
+</head>
+<body>
+<table>
+  <tr>
+    <td class="timestamp">18:24<td>
+    <td class="name">GoGoGarrett</td>
+    <td class="text">how do I test it</td>
+  </tr>
+	<tr>
+		<td class="timestamp">18:24</td>
+		<td class="name">Rob_</td>
+		<td class="text">you could do...</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:24</td>
+		<td class="name">Rob_</td>
+		<td class="text">hrm</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:24</td>
+		<td class="name">Rob_</td>
+		<td class="text">what's the command again?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:25</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">add_hook(join) { |m| send_message( m[user] ) }</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:25</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">hmm</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:25</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">not sure haha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:25</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!send_message Rob_ hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:25</td>
+		<td class="name">Rob_</td>
+		<td class="text">ah, see, it's not quite right</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:25</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">my send message</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:25</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">doesn't even accept a message paramater</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:26</td>
+		<td class="name">Rob_</td>
+		<td class="text">well</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:26</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">that needs to be fixed</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:26</td>
+		<td class="name">Rob_</td>
+		<td class="text">for one</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:26</td>
+		<td class="name">Rob_</td>
+		<td class="text">you need two methods</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:26</td>
+		<td class="name">Rob_</td>
+		<td class="text">you need one that hooks into command</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:26</td>
+		<td class="name">Rob_</td>
+		<td class="text">that accepts something like !tell <username> <message></td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:26</td>
+		<td class="name">Rob_</td>
+		<td class="text">which then creates a new message</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:27</td>
+		<td class="name">Rob_</td>
+		<td class="text">and then you need the join hook to send the message when the person joins</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:27</td>
+		<td class="name">Rob_</td>
+		<td class="text">so you're about halfway there</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:33</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">in the conversion extention</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:33</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">you're doing #{$1} which is string inturpliatoin</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:33</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">but what is the $1</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:33</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">I've seen the same thing in a similar plugin i've used before</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:33</td>
+		<td class="name">Rob_</td>
+		<td class="text">$1 refers to the first match</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:33</td>
+		<td class="name">Rob_</td>
+		<td class="text">anything inside a () is a match</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:33</td>
+		<td class="name">Rob_</td>
+		<td class="text">$1, $2, $3...</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:33</td>
+		<td class="name">Rob_</td>
+		<td class="text">$@ for all of them, i think?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:34</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">This is probably wrong</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:34</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">because it's not what you're saying to do</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:34</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">but..</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:35</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">def tell(username, message)</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:35</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">if /\Atell (\w+\s+) (\w+\s)/i.match command</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:35</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">send_message("#{$1}", "#{$2}")</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:35</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">end</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:35</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">end</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:35</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">is that atleast how the $1 works?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:35</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">sigh</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:35</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">I could just use username</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:35</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">haha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:35</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">that's not good at all</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:36</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">So should the init function be join sitll?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:36</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">when someone join's it runs send message - which checks to see if they have any in the database and sends them. But when you do !tell, that needs to create a new object and store it in the database</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:36</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">right</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:38</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">or should the init function do both</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:38</td>
+		<td class="name">Rob_</td>
+		<td class="text">yeah, sort of</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:38</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">add hook for command, to recognize !tell's, as well as check on join</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:38</td>
+		<td class="name">Rob_</td>
+		<td class="text">hold on</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:38</td>
+		<td class="name">Rob_</td>
+		<td class="text">yeah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:38</td>
+		<td class="name">Rob_</td>
+		<td class="text">exactly so</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:38</td>
+		<td class="name">Rob_</td>
+		<td class="text">generally what i do</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:39</td>
+		<td class="name">Rob_</td>
+		<td class="text">is i write a route method</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:39</td>
+		<td class="name">Rob_</td>
+		<td class="text">and then i hook that to command</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:39</td>
+		<td class="name">Rob_</td>
+		<td class="text">and then route says 'okay, if this matches this regex, call this method with this params'</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:39</td>
+		<td class="name">Rob_</td>
+		<td class="text">you've got it in essence for $1, $2, but keep in mind that the first one is going to match multiple words</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:39</td>
+		<td class="name">Rob_</td>
+		<td class="text">or rather, it'll match one word + a bunch of space</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:40</td>
+		<td class="name">Rob_</td>
+		<td class="text">you'll only want to do (\w+) for the first one</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:40</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">gotcha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:40</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">Those were just temp's</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:40</td>
+		<td class="name">Rob_</td>
+		<td class="text">for sure</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:40</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">until I could get the thoughtprocess lined out</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:40</td>
+		<td class="name">Rob_</td>
+		<td class="text">but yeah, you understand</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:40</td>
+		<td class="name">Rob_</td>
+		<td class="text">for sure D</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:40</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">only confused at one point right now</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:40</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">I have def route(target, command)</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">then i match</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">if /tell gogogarrett hey what's up/.match command</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">then would I run the send_message method, or would I create a new method that stores an object in the db.</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">I'm thinking a new method</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:41</td>
+		<td class="name">Rob_</td>
+		<td class="text">you'd run a new method</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:41</td>
+		<td class="name">Rob_</td>
+		<td class="text">yeah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:41</td>
+		<td class="name">Rob_</td>
+		<td class="text">because this is the command that you're sending in the channel</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:41</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">k, just making sure</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:42</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">yeah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:42</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">hmm</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:43</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">def save_message(username, message)</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:43</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">@message = Message.new</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:43</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">@message.update_attributes(username username, body message)</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:43</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">end</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:43</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">then save.. etc</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:43</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">or is there an easier way</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">yeah, there is</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">sigh</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">i'm dumb</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">@message = Message.new {attrs}</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">no worries D</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">.new( -> pass in values</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">just pass it the vals, yeah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">yeah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">no worries</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">Rob_</td>
+		<td class="text">man, i still look up Array#each</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:44</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">I think of it in two different terms haha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:45</td>
+		<td class="name">Rob_</td>
+		<td class="text">if you have a clue where you're going</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:45</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">i'm like ok ruby, ok rails</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:45</td>
+		<td class="name">Rob_</td>
+		<td class="text">you're fine</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:45</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">but rails is just ruby</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:45</td>
+		<td class="name">Rob_</td>
+		<td class="text">yeah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:45</td>
+		<td class="name">Rob_</td>
+		<td class="text">it is</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:45</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">-p</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:45</td>
+		<td class="name">Rob_</td>
+		<td class="text">rails is just a superset of ruby</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:45</td>
+		<td class="name">Rob_</td>
+		<td class="text">and i happen to be stealing the best parts for ruby</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:46</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:47</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:47</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">Do I need to rejoin in order for it to work?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:49</td>
+		<td class="name">Rob_</td>
+		<td class="text">you could /cycle</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:49</td>
+		<td class="name">Rob_</td>
+		<td class="text">because it's looking for you to join before it messages you</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:49</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">!help</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">!50f to c</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:58</td>
+		<td class="name">Boxbot</td>
+		<td class="text">50*F => 10.0*C</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">okay, you're working again</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">!config list</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">haha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">oh, garebear</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:58</td>
+		<td class="name">Rob_</td>
+		<td class="text">you are so slow</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:58</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">haha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:58</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:59</td>
+		<td class="name">Rob_</td>
+		<td class="text">there</td>
+	</tr>
+	<tr>
+		<td class="timestamp">18:59</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:00</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:02</td>
+		<td class="name">Rob_</td>
+		<td class="text">my issue is really weird and complicated /</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:02</td>
+		<td class="name">Rob_</td>
+		<td class="text">okay</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:02</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:02</td>
+		<td class="name">Rob_</td>
+		<td class="text">here's how this works</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:02</td>
+		<td class="name">Rob_</td>
+		<td class="text">look at line 44 of this https//github.com/gogogarrett/robox2/blob/master/lib/ircclient.rb</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:02</td>
+		<td class="name">Rob_</td>
+		<td class="text">this is the parse method</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:02</td>
+		<td class="name">Rob_</td>
+		<td class="text">whenever robox gets a message</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:02</td>
+		<td class="name">Rob_</td>
+		<td class="text">he passes it to 'parse'</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:03</td>
+		<td class="name">Rob_</td>
+		<td class="text">parse then goes down the list of things it responds to</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:03</td>
+		<td class="name">Rob_</td>
+		<td class="text">and when it finds the highest prioirty response, it responds</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:03</td>
+		<td class="name">Rob_</td>
+		<td class="text">in this case, it makes it to line 61</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:03</td>
+		<td class="name">Rob_</td>
+		<td class="text">did receive privmsg</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:03</td>
+		<td class="name">Rob_</td>
+		<td class="text">it calls a function called did_receive_privmsg!</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:03</td>
+		<td class="name">Rob_</td>
+		<td class="text">passes it the target, i.e. the channel</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:03</td>
+		<td class="name">Rob_</td>
+		<td class="text">passes it the sending user</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:04</td>
+		<td class="name">Rob_</td>
+		<td class="text">and the message it gets</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:04</td>
+		<td class="name">Rob_</td>
+		<td class="text">capisce?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:04</td>
+		<td class="name">Rob_</td>
+		<td class="text">https//github.com/gogogarrett/robox2/blob/master/lib/ircclient_modules/events.rb</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:04</td>
+		<td class="name">Rob_</td>
+		<td class="text">here, in line 17</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:04</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">gotcha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:04</td>
+		<td class="name">Rob_</td>
+		<td class="text">it checks if the privmsg starts with a !</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:05</td>
+		<td class="name">Rob_</td>
+		<td class="text">if it does, it calls did_receive_command</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:05</td>
+		<td class="name">Rob_</td>
+		<td class="text">why it drops user, i'm not sure, but it does</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:05</td>
+		<td class="name">Rob_</td>
+		<td class="text">it calls that, which is on line 27</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:05</td>
+		<td class="name">Rob_</td>
+		<td class="text">then passes message</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:05</td>
+		<td class="name">Rob_</td>
+		<td class="text">command is message.</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:06</td>
+		<td class="name">Rob_</td>
+		<td class="text">it's pretty much the message you removed verbatim, but with the ! removed</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:06</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">but i'm confused</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:06</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">as to where the user goes</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:06</td>
+		<td class="name">Rob_</td>
+		<td class="text">it's a typo in the code</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:06</td>
+		<td class="name">Rob_</td>
+		<td class="text">the user should be in there, too</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:07</td>
+		<td class="name">Rob_</td>
+		<td class="text">atm, you're just not going to be able to get the sender's name</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:07</td>
+		<td class="name">Rob_</td>
+		<td class="text">i'll fix that shortly</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:07</td>
+		<td class="name">Rob_</td>
+		<td class="text">just as soon as i fix this fricking issue with hooks -.-</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:07</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">haha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:07</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">did you write all this?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:08</td>
+		<td class="name">Rob_</td>
+		<td class="text">yeah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:08</td>
+		<td class="name">Rob_</td>
+		<td class="text">sure did )</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:08</td>
+		<td class="name">Rob_</td>
+		<td class="text">it's a mess xD</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:08</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">nice haha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:08</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">nah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:08</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">above my head</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:09</td>
+		<td class="name">Rob_</td>
+		<td class="text">it's above my head -.-</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:09</td>
+		<td class="name">Rob_</td>
+		<td class="text">omg</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:09</td>
+		<td class="name">Rob_</td>
+		<td class="text">i figured it out</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:09</td>
+		<td class="name">Rob_</td>
+		<td class="text">i forgot a fucking !</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:09</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">so</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:09</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">in</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:09</td>
+		<td class="name">Rob_</td>
+		<td class="text">merge vs merge!</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:09</td>
+		<td class="name">Rob_</td>
+		<td class="text">-.-</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:09</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">what is target</td>
+	</tr>
