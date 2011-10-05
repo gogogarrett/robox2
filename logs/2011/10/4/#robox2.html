@@ -859,3 +859,228 @@
 		<td class="name">GoGoGarrett</td>
 		<td class="text">what is target</td>
 	</tr>
+	<tr>
+		<td class="timestamp">19:19</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:20</td>
+		<td class="name">Rob_</td>
+		<td class="text">yeah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:20</td>
+		<td class="name">Rob_</td>
+		<td class="text">in this example</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:21</td>
+		<td class="name">Rob_</td>
+		<td class="text">command will be 'tell gogogarrett hey'</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:21</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">oh.</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:21</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">I'm confused myself I believe.</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:22</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">target => irc.yurkowski.net</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:22</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">user => gogogarrett</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:23</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">message.join (' ') => hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:23</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">right?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:23</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">on lib/ircclient.rb</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:24</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">I get it</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:24</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">it's just joining it up</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:24</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">as it goes</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:24</td>
+		<td class="name">Rob_</td>
+		<td class="text">yep</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:24</td>
+		<td class="name">Rob_</td>
+		<td class="text">that looks right</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:25</td>
+		<td class="name">Rob_</td>
+		<td class="text">use this for your regex</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:25</td>
+		<td class="name">Rob_</td>
+		<td class="text">tell (\w+) ([\w\s]+)</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:25</td>
+		<td class="name">Rob_</td>
+		<td class="text">\Atell (\w+) ([\w\s]+)\Z</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:25</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">i guess what's confusing me is if I have</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:25</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">add_hook(command) { |m| route m[target], m[user], m[command] }</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:26</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">and then I have def route(target,user,command)</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:26</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">why am I still asking for tell (\w) when I have a user paramater</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:28</td>
+		<td class="name">Rob_</td>
+		<td class="text">because the user refers to you</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:28</td>
+		<td class="name">Rob_</td>
+		<td class="text">not to the person you want to send the message to P</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:28</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">ahh</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:28</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">there ya go</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:28</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">that's why I was like wtf?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:28</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">i was seeing</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:28</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">the hook as</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:28</td>
+		<td class="name">Rob_</td>
+		<td class="text">haha</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:28</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">ah</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:28</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">makes much more sense.</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:29</td>
+		<td class="name">Rob_</td>
+		<td class="text">got it all figured out?</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:29</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">we'll see</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:29</td>
+		<td class="name">Rob_</td>
+		<td class="text">i have my crazy branch all ready to go</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:30</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:32</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:32</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:33</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:37</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">brb getting a drink</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:37</td>
+		<td class="name">Rob_</td>
+		<td class="text">kk</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:38</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">!tell gogogarrett hey</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:38</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">well he hasn't broke yet</td>
+	</tr>
+	<tr>
+		<td class="timestamp">19:39</td>
+		<td class="name">GoGoGarrett</td>
+		<td class="text">no private messgae though</td>
+	</tr>
